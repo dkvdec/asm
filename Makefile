@@ -6,11 +6,11 @@
 #    By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/22 14:42:42 by dheredat          #+#    #+#              #
-#    Updated: 2020/08/22 17:18:20 by dheredat         ###   ########.fr        #
+#    Updated: 2020/09/02 22:01:25 by dheredat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-F				=	
+FLAGS			=	-Wall -Wextra -Werror	
 NAME			=	asm
 LIBFT_DIR		=	libft
 LIBFT_INC_DIR	=	$(LIBFT_DIR)/inc

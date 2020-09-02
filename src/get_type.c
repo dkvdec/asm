@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:46:10 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/01 23:53:41 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/02 22:07:56 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,8 @@ int			get_type(char **str, int bytes, int fd, t_hero **hero)
 		ft_strdel(&s);
 		return (2);
 	}
-	if (ft_strlen(s) == 1 && *s == '\n')
-	{
-		ft_strdel(&s);
-		ft_strdel(str);
-		return (2);
-	}
-	if (s[0] == COMMENT_CHAR || s[0] == ALT_COMMENT_CHAR)
+	if ((ft_strlen(s) == 1 && *s == '\n')
+	|| s[0] == COMMENT_CHAR || s[0] == ALT_COMMENT_CHAR)
 	{
 		ft_strdel(&s);
 		ft_strdel(str);

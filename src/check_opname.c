@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:45:20 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:01:34 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/02 22:41:32 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,29 @@ int	check_opname(char *str)
 		return (fxoz_check(str));
 	else
 		return (-1);
+}
+
+int	check_namecomm(char **str, int type, int fd, t_hero **hero)
+{
+	size_t	len;
+	int		count;
+
+	len = type ? ft_strlen(COMMENT_CMD_STRING) : ft_strlen(NAME_CMD_STRING);
+	if (ft_strlen((*str)) <= len || ((*str)[len] != '\t'
+								&& (*str)[len] != ' ' && (*str)[len] != '"'))
+		quit(EN_CHAMP, NULL, NULL);
+	while ((*str)[len] == '\t' || (*str)[len] == ' ')
+		len++;
+	if ((*str)[len] == '"')
+	{
+		if ((count = ft_countch(&(*str)[len], '"')) == 2)
+			odnostrok(*str, len, type);
+		else
+			mnogostrok(str, fd, count);
+		fill_hero(type, str, hero);
+		return (type);
+	}
+	else
+		quit(EN_CHAMPMISS, NULL, NULL);
+	return (-1);
 }

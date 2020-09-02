@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:41:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/01 23:51:10 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/02 22:40:44 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,8 @@ int						fxoz_check(char *str);
 */
 
 int						check_opname(char *str);
+int						odnostrok(char *str, int len, int type);
+int						mnogostrok(char **str, int fd, int c);
 
 /*
 **		MEMORY BLOCK

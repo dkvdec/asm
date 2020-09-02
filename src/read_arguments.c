@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:47:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:02:49 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/02 22:04:26 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,8 @@ static char	*third_arg(char *str, int args[3], t_vldop *op)
 
 void		read_arguments(char *str, t_vldop *op)
 {
-	int		i;
 	char	*tmp;
 
-	i = 1;
 	get_patterns(op->code, op->args);
 	tmp = first_arg(str, op->args, op);
 	tmp = second_arg(tmp, op->args, op);

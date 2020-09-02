@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:45:10 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:01:31 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/02 22:39:42 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*tail_search(char *str)
 	return (str);
 }
 
-static int	odnostrok(char *str, int len, int type)
+int			odnostrok(char *str, int len, int type)
 {
 	int	n;
 
@@ -62,7 +62,14 @@ static int	odnostrok(char *str, int len, int type)
 	return (type);
 }
 
-static int	mnogostrok(char **str, int fd, int c)
+static void	mnogostrok_clean(char ***str, char *tmp, char *protail, char *tail)
+{
+	**str = tmp;
+	ft_strdel(&tail);
+	ft_strdel(&protail);
+}
+
+int			mnogostrok(char **str, int fd, int c)
 {
 	char	*protail;
 	char	*tail;
@@ -87,33 +94,6 @@ static int	mnogostrok(char **str, int fd, int c)
 		tmp = protail;
 	}
 	ft_strdel(str);
-	*str = tmp;
-	ft_strdel(&tail);
-	ft_strdel(&protail);
+	mnogostrok_clean(&str, tmp, protail, tail);
 	return (1);
-}
-
-int			check_namecomm(char **str, int type, int fd, t_hero **hero)
-{
-	size_t	len;
-	int		count;
-
-	len = type ? ft_strlen(COMMENT_CMD_STRING) : ft_strlen(NAME_CMD_STRING);
-	if (ft_strlen((*str)) <= len || ((*str)[len] != '\t'
-								&& (*str)[len] != ' ' && (*str)[len] != '"'))
-		quit(EN_CHAMP, NULL, NULL);
-	while ((*str)[len] == '\t' || (*str)[len] == ' ')
-		len++;
-	if ((*str)[len] == '"')
-	{
-		if ((count = ft_countch(&(*str)[len], '"')) == 2)
-			odnostrok(*str, len, type);
-		else
-			mnogostrok(str, fd, count);
-		fill_hero(type, str, hero);
-		return (type);
-	}
-	else
-		quit(EN_CHAMPMISS, NULL, NULL);
-	return (-1);
 }
