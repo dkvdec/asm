@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:45:10 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/02 22:39:42 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/19 14:35:53 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int			odnostrok(char *str, int len, int type)
 {
 	int	n;
 
-	n = strrchr(&str[len], '"') - strchr(&str[len], '"') - 1;
-	if (!tail_check(strrchr(&str[len], '"') + 1))
+	n = ft_strrchr(&str[len], '"') - ft_strchr(&str[len], '"') - 1;
+	if (!tail_check(ft_strrchr(&str[len], '"') + 1))
 		quit(EN_TRASH, NULL, NULL);
 	len = type ? COMMENT_LENGTH : PROG_NAME_LENGTH;
 	if (n > len)
