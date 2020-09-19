@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:45:00 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:01:27 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/19 17:41:12 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,27 @@ long		atoli(char *str)
 	return (res * sign);
 }
 
-static int	file_name(char **fn)
+char	*new_file_name(char *fn, char *ext)
 {
+	int		name_len;
+	int		ext_len;
+	char	*new_name;
 	int		i;
-	char	*beg;
 
-	i = ft_strlen(*fn);
-	while (--i > 0)
+	ext_len = ft_strlen(ext);
+	name_len = ft_strlen(fn) - ((ext_len == 4) ? 2 : 4);
+	if (!(new_name = ft_strnew(name_len + ext_len)))
+		exit(1); // malloc error
+	i = 0;
+	while (i < name_len + ext_len)
 	{
-		if ((*fn)[i] == '.')
-		{
-			beg = ft_strsub(*fn, 0, i);
-			ft_strdel(fn);
-			*fn = ft_strjoin(beg, ".cor");
-			ft_strdel(&beg);
-			return (1);
-		}
+		if (i < name_len)
+			new_name[i] = fn[i];
+		else
+			new_name[i] = ext[i - name_len];
+		i++;
 	}
-	ft_strdel(fn);
-	*fn = ft_strdup(".cor");
-	return (-1);
+	return (new_name);
 }
 
 static void	normal_output(char *fn)
@@ -74,7 +75,7 @@ void		write_filler(unsigned char *bc,\
 	bc[3] = 243;
 	ft_memccpy(bc + 4, hero->name, 0, PROG_NAME_LENGTH);
 	ft_memccpy(bc + 140, hero->comment, 0, COMMENT_LENGTH);
-	file_name(&fn);
+	fn = new_file_name(fn, ".cor"); //just generate new *.cor name
 	fd = open(fn, O_CREAT | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
 	write(fd, bc, 4);
 	write(fd, bc + 4, 128);

@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:48:01 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:02:53 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/19 17:39:21 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static unsigned int	index_count(t_hero *hero)
 	return (bcsz);
 }
 
-int					translator(t_hero *hero, char *av)
+int					translator(t_hero *hero, char *fn)
 {
 	unsigned char	bc[2192];
 	t_op			*beg;
@@ -108,9 +108,9 @@ int					translator(t_hero *hero, char *av)
 	while (beg)
 	{
 		if (!(op_code(beg, hero)))
-			exit(0);
+			exit(1);
 		beg = beg->next;
 	}
-	write_filler(bc, hero, bcsz, av);
+	write_filler(bc, hero, bcsz, fn);
 	return (0);
 }

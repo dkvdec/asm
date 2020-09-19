@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:45:42 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:01:42 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/19 14:57:50 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	exit_with_op(int e, t_vldop *op, char *str)
 		write_inst(op->code);
 		write(ERRSTREAM, "]\n", 2);
 	}
-	exit(0);
+	exit(1);
 }
 
 void		quit(int e, t_vldop *op, char *arg)
@@ -109,7 +109,7 @@ void		quit(int e, t_vldop *op, char *arg)
 		write(ERRSTREAM, E_LABEL, ft_strlen(E_LABEL));
 	else if (e == EN_NOINST)
 		write(ERRSTREAM, E_NOINST, ft_strlen(E_NOINST));
-	exit(0);
+	exit(1);
 }
 
 void		ft_quit(int e, char c)
@@ -127,5 +127,5 @@ void		ft_quit(int e, char c)
 			write(ERRSTREAM, &c, 1);
 		write(ERRSTREAM, "]\n", 2);
 	}
-	exit(0);
+	exit(1);
 }
