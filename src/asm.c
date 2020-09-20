@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:44:05 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/19 19:36:39 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/20 00:36:04 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void launch_asm(char *file_name)
 	del_hero(&hero);
 }
 
-int read_n_compare(int fd, int sample)
-{
-	char buff[4];
-	int size;
+// int read_n_compare(int fd, int sample)
+// {
+// 	char buff[4];
+// 	int size;
 
-	size = read(fd, buff, 4);
-	if (size < 0)
-		exit (1);
-}
+// 	size = read(fd, buff, 4);
+// 	if (size < 0)
+// 		exit (1);
+// }
 
 void launch_dis(char *file_name)
 {
@@ -50,6 +50,7 @@ void launch_dis(char *file_name)
 
 	if ((fd = open(file_name, O_RDONLY)) <= 0)
 		ft_quit(-1, 0);
+	parse_byte_code();
 	close(fd);
 }
 

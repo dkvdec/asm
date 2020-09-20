@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:41:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/02 22:40:44 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/19 23:04:02 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@
 # define STR_FORK		"fork"
 # define STR_ZJMP		"zjmp"
 
-# define BCSZ			10000
+// # define BCSZ			10000
 # define NO_LABEL_PNT	0
 # define NO_LABEL_ARG	2
 
@@ -191,7 +191,9 @@ typedef struct			s_hero
 	char				*name;
 	char				*comment;
 	t_op				*op;
-	unsigned char		excode[BCSZ];
+	// unsigned char		excode[BCSZ];
+	unsigned int		byte_code_size;
+	unsigned char		*excode;
 	int					p;
 }						t_hero;
 

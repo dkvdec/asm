@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:46:42 by dheredat          #+#    #+#             */
-/*   Updated: 2020/08/22 17:02:02 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/19 23:18:47 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	del_hero(t_hero **hero)
 		ft_strdel(&((*hero)->name));
 		ft_strdel(&((*hero)->comment));
 		del_ops((*hero)->op);
+		free((*hero)->excode);
 		free(*hero);
 		*hero = NULL;
 	}
