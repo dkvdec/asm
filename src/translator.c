@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:48:01 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/20 14:12:33 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 00:59:46 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,14 @@ int					translator(t_hero *hero, char *fn)
 	hero->p = 0;
 	hero->bt_cd_sz = index_count(hero);
 	if (!(hero->excode = (unsigned char*)malloc(sizeof(char) * hero->bt_cd_sz)))
-		exit(1);// error
+		error_func("r-", "Error! Malloc error.");
 	while (i < hero->bt_cd_sz)
 		hero->excode[i++] = 0;
 	beg = hero->op;
 	while (beg)
 	{
 		if (!(op_code(beg, hero)))
-			exit(1);
+			error_func("r-", "Error! Postprocess error.");
 		beg = beg->next;
 	}
 	write_filler(bc, hero, hero->bt_cd_sz, fn);
