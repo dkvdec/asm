@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/asm",
-            "args": ["champ1.s"],
+            "args": ["champ.cor"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],

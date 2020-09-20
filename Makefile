@@ -6,7 +6,7 @@
 #    By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/22 14:42:42 by dheredat          #+#    #+#              #
-#    Updated: 2020/09/02 22:01:25 by dheredat         ###   ########.fr        #
+#    Updated: 2020/09/20 19:42:11 by dheredat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC				=	args_checker.c\
 					operations.c\
 					parse_inst.c\
 					read_arguments.c\
-					translator.c
+					translator.c\
+					error_func.c
 
 
 OBJS			=	$(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))

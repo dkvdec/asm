@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:41:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/19 23:04:02 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/20 21:02:11 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,11 +191,23 @@ typedef struct			s_hero
 	char				*name;
 	char				*comment;
 	t_op				*op;
-	// unsigned char		excode[BCSZ];
-	unsigned int		byte_code_size;
+	unsigned int		bt_cd_sz;
 	unsigned char		*excode;
 	int					p;
 }						t_hero;
+
+typedef struct			s_dis
+{
+	int					fd_src;
+	int					fd_dst;
+	char		*file_name;
+	char		*name;
+	char		*comment;
+	int				code_size;
+	char				*code;
+	// int				pos;
+	// t_statement			*statements;
+}						t_dis;
 
 int						op_code(t_op *op, t_hero *h);
 int						get_types(t_op *op, t_hero *h);
@@ -274,5 +286,7 @@ void					vldop_del(t_vldop **op);
 void					quit(int e, t_vldop *op, char *arg);
 void					ft_quit(int e, char c);
 void					write_label(char *l);
+void					error_func(char *clr, char *str);
+char	*new_file_name(char *fn, char *ext);
 
 #endif

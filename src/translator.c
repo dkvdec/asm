@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:48:01 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/19 23:12:07 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/20 14:12:33 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ int					translator(t_hero *hero, char *fn)
 {
 	unsigned char	bc[2192];
 	t_op			*beg;
-	// unsigned int	bcsz;
 	unsigned int	i;
 
 	i = -1;
@@ -101,12 +100,11 @@ int					translator(t_hero *hero, char *fn)
 		bc[i] = 0;
 	i = 0;
 	hero->p = 0;
-	hero->byte_code_size = index_count(hero);
-	if (!(hero->excode = (unsigned char*)malloc(sizeof(char) * hero->byte_code_size)))
+	hero->bt_cd_sz = index_count(hero);
+	if (!(hero->excode = (unsigned char*)malloc(sizeof(char) * hero->bt_cd_sz)))
 		exit(1);// error
-	while (i < hero->byte_code_size)
+	while (i < hero->bt_cd_sz)
 		hero->excode[i++] = 0;
-	printf("%u\n", hero->byte_code_size);//
 	beg = hero->op;
 	while (beg)
 	{
@@ -114,6 +112,6 @@ int					translator(t_hero *hero, char *fn)
 			exit(1);
 		beg = beg->next;
 	}
-	write_filler(bc, hero, hero->byte_code_size, fn);
+	write_filler(bc, hero, hero->bt_cd_sz, fn);
 	return (0);
 }
