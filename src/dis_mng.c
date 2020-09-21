@@ -6,13 +6,13 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 00:31:57 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 02:54:29 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 23:21:55 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/asm.h"
 
-t_dis			*init_dis_struct(char *file_name)
+t_dis		*init_dis_struct(char *file_name)
 {
 	t_dis *asm_code;
 
@@ -21,7 +21,8 @@ t_dis			*init_dis_struct(char *file_name)
 	if ((asm_code->fd_src = open(file_name, O_RDONLY)) <= 0)
 		error_func("r-", "Error! Src file open error.");
 	asm_code->file_name = new_file_name(file_name, ".s");
-	if ((asm_code->fd_dst = open(asm_code->file_name, O_CREAT | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR))<= 0)
+	if ((asm_code->fd_dst = open(asm_code->file_name,
+	O_CREAT | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR)) <= 0)
 		error_func("r-", "Error! Dst file open error.");
 	asm_code->name = NULL;
 	asm_code->comment = NULL;
@@ -32,7 +33,7 @@ t_dis			*init_dis_struct(char *file_name)
 	return (asm_code);
 }
 
-void	add_oper(t_op **list, t_op *new)
+void		add_oper(t_op **list, t_op *new)
 {
 	t_op *current;
 
@@ -50,7 +51,7 @@ void	add_oper(t_op **list, t_op *new)
 	}
 }
 
-void			free_dis_struct(t_dis **asm_code)
+void		free_dis_struct(t_dis **asm_code)
 {
 	close((*asm_code)->fd_src);
 	close((*asm_code)->fd_dst);

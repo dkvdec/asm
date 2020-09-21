@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 23:30:08 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/20 19:40:59 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 23:18:32 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void		colour_on(char c, char s)
 	}
 }
 
-static int			colour_check(char *str)
+static int		colour_check(char *str)
 {
 	char c;
 	char s;
@@ -76,15 +76,15 @@ static int			colour_check(char *str)
 	return (0);
 }
 
-void error_func(char *clr, char *str)
+void			error_func(char *clr, char *str)
 {
-    size_t len;
+	size_t len;
 
-    if (clr && colour_check(clr))
-        colour_on(clr[0], clr[1]);
-    len = ft_strlen(str);
-    write(2, str, len);
-    write(2, "\033[0m", 5);
-    write(2, "\n", 1);
-    exit(1);
+	if (clr && colour_check(clr))
+		colour_on(clr[0], clr[1]);
+	len = ft_strlen(str);
+	write(2, str, len);
+	write(2, "\033[0m", 5);
+	write(2, "\n", 1);
+	exit(1);
 }

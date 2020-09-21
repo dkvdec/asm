@@ -6,13 +6,13 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:45:00 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/19 17:41:12 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 23:01:22 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/asm.h"
 
-long		atoli(char *str)
+long			atoli(char *str)
 {
 	int		i;
 	long	res;
@@ -33,7 +33,7 @@ long		atoli(char *str)
 	return (res * sign);
 }
 
-char	*new_file_name(char *fn, char *ext)
+char			*new_file_name(char *fn, char *ext)
 {
 	int		name_len;
 	int		ext_len;
@@ -43,7 +43,7 @@ char	*new_file_name(char *fn, char *ext)
 	ext_len = ft_strlen(ext);
 	name_len = ft_strlen(fn) - ((ext_len == 4) ? 2 : 4);
 	if (!(new_name = ft_strnew(name_len + ext_len)))
-		exit(1); // malloc error
+		error_func("r-", "Error! Malloc error.");
 	i = 0;
 	while (i < name_len + ext_len)
 	{
@@ -56,7 +56,7 @@ char	*new_file_name(char *fn, char *ext)
 	return (new_name);
 }
 
-static void	normal_output(char *fn)
+static void		normal_output(char *fn)
 {
 	write(1, "Writing output program to ", 27);
 	write(1, fn, ft_strlen(fn));
@@ -64,7 +64,7 @@ static void	normal_output(char *fn)
 	ft_strdel(&fn);
 }
 
-void		write_filler(unsigned char *bc,\
+void			write_filler(unsigned char *bc,\
 				t_hero *hero, unsigned int s, char *fn)
 {
 	int		fd;
@@ -75,7 +75,7 @@ void		write_filler(unsigned char *bc,\
 	bc[3] = 243;
 	ft_memccpy(bc + 4, hero->name, 0, PROG_NAME_LENGTH);
 	ft_memccpy(bc + 140, hero->comment, 0, COMMENT_LENGTH);
-	fn = new_file_name(fn, ".cor"); //just generate new *.cor name
+	fn = new_file_name(fn, ".cor");
 	fd = open(fn, O_CREAT | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
 	write(fd, bc, 4);
 	write(fd, bc + 4, 128);

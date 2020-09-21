@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 23:34:04 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 22:46:59 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 23:20:10 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ static char		*get_str(t_dis *asm_code, size_t len)
 	return (buffer);
 }
 
-unsigned char			*get_code(t_dis *asm_code)
+unsigned char	*get_code(t_dis *asm_code)
 {
-	ssize_t	size;
+	ssize_t			size;
 	unsigned char	*buffer;
-	char	byte;
+	char			byte;
 
 	if (!(buffer = ft_memalloc(asm_code->code_size)))
 		error_func("r-", "Error! Malloc error.");

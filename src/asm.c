@@ -6,13 +6,13 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:44:05 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 22:54:27 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 23:31:15 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/asm.h"
 
-static void		show_usage(char *name)
+static void	show_usage(char *name)
 {
 	write(1, "Usage: ", 8);
 	write(1, name, ft_strlen(name));
@@ -20,10 +20,10 @@ static void		show_usage(char *name)
 	exit(0);
 }
 
-void			launch_asm(char *file_name)
+void		launch_asm(char *file_name)
 {
-	t_hero		*hero;
-	int			fd;
+	t_hero	*hero;
+	int		fd;
 
 	if ((fd = open(file_name, O_RDONLY)) <= 0)
 		ft_quit(-1, 0);
@@ -34,22 +34,22 @@ void			launch_asm(char *file_name)
 	del_hero(&hero);
 }
 
-void			launch_dis(char *file_name)
+void		launch_dis(char *file_name)
 {
-	t_dis		*asm_code;
+	t_dis	*asm_code;
 
 	asm_code = init_dis_struct(file_name);
 	get_src_code(asm_code);
 	while (asm_code->pos < asm_code->code_size)
-		add_oper(&(asm_code->opers), process_oper(asm_code));
+		add_oper(&(asm_code->opers), get_oper(asm_code));
 	print_header_to_dst_file(asm_code);
 	print_asm_code_to_dst_file(asm_code);
 	free_dis_struct(&asm_code);
 }
 
-void			check_file_name(char *file_name)
+void		check_file_name(char *file_name)
 {
-	char		*ext_pnt;
+	char	*ext_pnt;
 
 	ext_pnt = NULL;
 	ext_pnt = ft_strrchr(file_name, '.');

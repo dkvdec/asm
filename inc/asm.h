@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:41:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 22:22:59 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 23:53:06 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,12 +175,12 @@ typedef struct			s_op
 {
 	int					code;
 	int					types[3];
-	long				nargs[3];//args here
+	long				nargs[3];
 	char				*args[3];
-	int					bytes;//
-	char				*labels[LABELS];//
-	char				*curlabels[3];//
-	int					idop;//
+	int					bytes;
+	char				*labels[LABELS];
+	char				*curlabels[3];
+	int					idop;
 	struct s_op			*prev;
 	struct s_op			*next;
 }						t_op;
@@ -199,13 +199,13 @@ typedef struct			s_dis
 {
 	int					fd_src;
 	int					fd_dst;
-	char		*file_name;
-	char		*name;
-	char		*comment;
-	int				code_size;
-	unsigned char				*code;
-	int				pos;
-	t_op			*opers;
+	char				*file_name;
+	char				*name;
+	char				*comment;
+	int					code_size;
+	unsigned char		*code;
+	int					pos;
+	t_op				*opers;
 }						t_dis;
 
 int						op_code(t_op *op, t_hero *h);
@@ -286,21 +286,21 @@ void					quit(int e, t_vldop *op, char *arg);
 void					ft_quit(int e, char c);
 void					write_label(char *l);
 void					error_func(char *clr, char *str);
-char	*new_file_name(char *fn, char *ext);
+char					*new_file_name(char *fn, char *ext);
 
 /*
 ** DIS
 */
 
-int				char_to_int(unsigned char *bytecode, size_t size);
+int						char_to_int(unsigned char *bytecode, size_t size);
 unsigned char			*get_code(t_dis *asm_code);
-void			get_src_code(t_dis *asm_code);
-t_dis			*init_dis_struct(char *file_name);
-void	add_oper(t_op **list, t_op *new);
-void			free_dis_struct(t_dis **asm_code);
-void		print_header_to_dst_file(t_dis *asm_code);
-void         print_asm_code_to_dst_file(t_dis *asm_code);
-void			process_arg_types(t_dis *asm_code, t_op *oper);
-t_op	*process_oper(t_dis *asm_code);
+void					get_src_code(t_dis *asm_code);
+t_dis					*init_dis_struct(char *file_name);
+void					add_oper(t_op **list, t_op *new);
+void					free_dis_struct(t_dis **asm_code);
+void					print_header_to_dst_file(t_dis *asm_code);
+void         			print_asm_code_to_dst_file(t_dis *asm_code);
+t_op					*get_oper(t_dis *asm_code);
+void					get_darg_types(t_dis *asm_code, t_op *oper);
 
 #endif

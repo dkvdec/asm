@@ -6,7 +6,7 @@
 #    By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/22 14:42:42 by dheredat          #+#    #+#              #
-#    Updated: 2020/09/21 02:52:38 by dheredat         ###   ########.fr        #
+#    Updated: 2020/09/21 23:54:02 by dheredat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC				=	args_checker.c\
 					dis_dec.c\
 					dis_get.c\
 					dis_mng.c\
+					dis_type.c\
 					dis_print.c
 
 
