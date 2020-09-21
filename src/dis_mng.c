@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dis_str_mng.c                                      :+:      :+:    :+:   */
+/*   dis_mng.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 00:31:57 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 00:35:24 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 02:54:29 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,24 @@ t_dis			*init_dis_struct(char *file_name)
 	return (asm_code);
 }
 
+void	add_oper(t_op **list, t_op *new)
+{
+	t_op *current;
+
+	if (list)
+	{
+		if (*list)
+		{
+			current = *list;
+			while (current->next)
+				current = current->next;
+			current->next = new;
+		}
+		else
+			*list = new;
+	}
+}
+
 void			free_dis_struct(t_dis **asm_code)
 {
 	close((*asm_code)->fd_src);
@@ -39,4 +57,8 @@ void			free_dis_struct(t_dis **asm_code)
 	ft_strdel(&((*asm_code)->file_name));
 	ft_strdel(&((*asm_code)->name));
 	ft_strdel(&((*asm_code)->comment));
+	del_ops(((*asm_code))->opers);
+	free((*asm_code)->code);
+	free(*asm_code);
+	*asm_code = NULL;
 }

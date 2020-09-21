@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dis.c                                              :+:      :+:    :+:   */
+/*   dis_get.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 23:34:04 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 00:36:46 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 03:04:07 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static char		*get_str(t_dis *asm_code, size_t len)
 	return (buffer);
 }
 
-char			*get_code(t_dis *asm_code)
+unsigned char			*get_code(t_dis *asm_code)
 {
 	ssize_t	size;
-	char	*buffer;
+	unsigned char	*buffer;
 	char	byte;
 
 	if (!(buffer = ft_memalloc(asm_code->code_size)))

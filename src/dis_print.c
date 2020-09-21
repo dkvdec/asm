@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 00:28:36 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 00:42:21 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 02:49:20 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void		print_header_to_dst_file(t_dis *asm_code)
 	ft_putendl_fd("\"\n", asm_code->fd_dst);
 }
 
-void         print_asm_code_to_dst_file(t_dis *asm_code)
-{
-    t_oper  cur;
+// void         print_asm_code_to_dst_file(t_dis *asm_code)
+// {
+//     t_oper  cur;
 
-    cur = asm_code->opers;
-    while (cur)
-    {
-        // print op_name
-        // print all_args
-    }
-}
+//     cur = asm_code->opers;
+//     while (cur)
+//     {
+//         // print op_name
+//         // print all_args
+//     }
+// }

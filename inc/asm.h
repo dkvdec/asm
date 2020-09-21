@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:41:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 01:19:23 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 03:04:03 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ typedef struct			s_op
 {
 	int					code;
 	int					types[3];
-	long				nargs[3];//
+	long				nargs[3];//args here
 	char				*args[3];
 	int					bytes;//
 	char				*labels[LABELS];//
@@ -195,14 +195,6 @@ typedef struct			s_hero
 	int					p;
 }						t_hero;
 
-typedef struct			s_oper
-{
-	t_op				*op;
-	// uint8_t				args_types[3];
-	// int32_t				args[3];
-	struct s_oper	*next;
-}						t_oper;
-
 typedef struct			s_dis
 {
 	int					fd_src;
@@ -211,9 +203,9 @@ typedef struct			s_dis
 	char		*name;
 	char		*comment;
 	int				code_size;
-	char				*code;
+	unsigned char				*code;
 	int				pos;
-	t_oper			*opers;
+	t_op			*opers;
 }						t_dis;
 
 int						op_code(t_op *op, t_hero *h);
@@ -295,5 +287,19 @@ void					ft_quit(int e, char c);
 void					write_label(char *l);
 void					error_func(char *clr, char *str);
 char	*new_file_name(char *fn, char *ext);
+
+/*
+** DIS
+*/
+
+int				char_to_int(unsigned char *bytecode, size_t size);
+unsigned char			*get_code(t_dis *asm_code);
+void			get_src_code(t_dis *asm_code);
+t_dis			*init_dis_struct(char *file_name);
+void	add_oper(t_op **list, t_op *new);
+void			free_dis_struct(t_dis **asm_code);
+void		print_header_to_dst_file(t_dis *asm_code);
+void			process_arg_types(t_dis *asm_code, t_op *oper);
+t_op	*process_oper(t_dis *asm_code);
 
 #endif
