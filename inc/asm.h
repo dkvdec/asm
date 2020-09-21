@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:41:49 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 03:04:03 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 22:22:59 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,6 +299,7 @@ t_dis			*init_dis_struct(char *file_name);
 void	add_oper(t_op **list, t_op *new);
 void			free_dis_struct(t_dis **asm_code);
 void		print_header_to_dst_file(t_dis *asm_code);
+void         print_asm_code_to_dst_file(t_dis *asm_code);
 void			process_arg_types(t_dis *asm_code, t_op *oper);
 t_op	*process_oper(t_dis *asm_code);
 

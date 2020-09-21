@@ -6,7 +6,7 @@
 /*   By: dheredat <dheredat@student.21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 23:34:04 by dheredat          #+#    #+#             */
-/*   Updated: 2020/09/21 03:04:07 by dheredat         ###   ########.fr       */
+/*   Updated: 2020/09/21 22:46:59 by dheredat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				char_to_int(unsigned char *bytecode, size_t size)
 		size--;
 	}
 	if (sign == -1)
-		result *= sign;
+		result = ~(result);
 	return (result);
 }
 
